@@ -6,7 +6,6 @@ module.exports = {
         const { page = 1 } = req.query; 
         const size_page = 5;
         const [count] = await connection('incident').count();
-        console.log(count);
         
         const incidents = await connection('incident')
             .join('ong', 'ong.id', '=', 'incident.ong_id')
@@ -40,7 +39,6 @@ module.exports = {
 
     async delete(req, res) {
         const { id } = req.params;
-        console.log(id)
         const ong_id = req.headers.authorization;
 
         const incident = await connection('incident')
